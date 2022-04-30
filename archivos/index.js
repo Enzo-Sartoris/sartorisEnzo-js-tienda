@@ -20,14 +20,19 @@ class tienda{
         this.iva = iva 
         this.precioConIva = precio*iva
     }
+    
 
     sillas(){
         return "si hay "+ this.producto+"su valor es $"+this.precioConIva
+        
     }
-    
 }
 const sillaHermeticas = new tienda("Sillas Hermeticas ",5000,1.21);
 
+let coloresSillas = ["rojo","marron","negra","blanca"]
 
 console.log(sillaHermeticas.sillas());
 
+
+
+console.log(coloresSillas);
