@@ -33,6 +33,6 @@ let coloresSillas = ["rojo","marron","negra","blanca"]
 
 console.log(sillaHermeticas.sillas());
 
-
+coloresSillas.push("amarilla")
 
 console.log(coloresSillas);
