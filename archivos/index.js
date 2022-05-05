@@ -14,7 +14,7 @@ while(edad<100){
 
 
 class tienda{
-    constructor(nombre, precio, iva,){
+    constructor(nombre, precio, iva){
         this.producto= nombre;
         this.precioSinIva = precio;
         this.iva = iva 
@@ -23,16 +23,28 @@ class tienda{
     
 
     sillas(){
-        return "si hay "+ this.producto+"su valor es $"+this.precioConIva
+        return "Si hay "+ this.producto+"su valor es $"+this.precioConIva
         
     }
+
+    mesas(){
+        return "Si hay "+ this.producto+"su valor es $"+this.precioConIva
+    }
 }
-const sillaHermeticas = new tienda("Sillas Hermeticas ",5000,1.21);
+const sillaHermetica = new tienda("Sillas Hermeticas ",5000,1.21);
+const totalSilla = sillaHermetica.precioConIva
+const mesaHermetica = new tienda("Mesa Hermetica ",9000,1.21);
+const totalMesa = mesaHermetica.precioConIva
 
 let coloresSillas = ["rojo","marron","negra","blanca"]
 
-console.log(sillaHermeticas.sillas());
+console.log(sillaHermetica.sillas());
 
 coloresSillas.push("amarilla")
 
 console.log(coloresSillas);
+
+console.log(mesaHermetica.mesas());
+
+
+console.log("El total de la compra es $ ",totalSilla+totalMesa);
