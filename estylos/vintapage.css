@@ -2,25 +2,31 @@ body{
     *margin:0;
     *padding: 0;
 }
-.containerEncabezado{
+#containerEncabezado{
     display:grid;   
     text-align: center;
 }
-.titulo{
+#titulo{
     color: brown;
     margin-top: 5%;
-}
-
-
-.containerCuerpo{
-    display: grid;
-    margin: 2%;
     
 }
 
-.textoInicio{
-    color: rgb(15, 14, 14);
-    padding:2%;
+
+#containerCuerpo{
+    display: grid;
+    
+    
+}
+
+#textoInicio{
+    color: rgb(197, 22, 22);
+    text-align: center;
+}
+
+#textoSecundario{
+    color: rgb(197, 22, 22);
+    text-align: center;
 }
 
 
@@ -54,3 +60,4 @@ body{
     padding: 3rem;
     text-align: center;
 }
+
