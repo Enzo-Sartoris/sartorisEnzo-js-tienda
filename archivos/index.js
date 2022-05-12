@@ -1,4 +1,4 @@
-/*let edad = prompt("coloque su edad")
+let edad = prompt("coloque su edad")
 while(edad<100){
     if(edad>15){
         alert("usted tiene permiso para comprar")
@@ -7,7 +7,7 @@ while(edad<100){
         alert("usted no tiene permiso para comprar")
     }
     break   
-}*/
+}
 
 class tienda {
     constructor(nombre, precio, iva) {
@@ -16,15 +16,21 @@ class tienda {
         this.iva = iva;
         this.precioConIva = precio * iva;
     }
+    item(){
+        return {
+            producto: this.producto,
+            precio: this.precioConIva
+        }
+    }
 
     sillas() {
-        return "Si hay " + this.producto + "su valor es $" + this.precioConIva;
+        return "Si hay " + this.producto + "y su valor es $" + this.precioConIva;
     }
-
     mesas() {
-        return "Si hay " + this.producto + "su valor es $" + this.precioConIva;
+        return "Si hay " + this.producto + "y su valor es $" + this.precioConIva;
     }
 }
+
 const sillaHermetica = new tienda("Sillas Hermeticas ", 5000, 1.21);
 const totalSilla = sillaHermetica.precioConIva;
 const mesaHermetica = new tienda("Mesa Hermetica ", 9000, 1.21);
@@ -44,22 +50,89 @@ console.log("El total de la compra es $ ", totalSilla + totalMesa);
 
 const titulo = document.getElementById("titulo");
 const textoInicio = document.getElementById("textoInicio");
-const textoSecundario = document.getElementById("textoSecundario");
+
 
 titulo.innerText = "Tienda Mia";
-textoInicio.innerHTML = "Qué mejor que equipar tu casa comprando todo lo necesario de una sola vez. Nuestros sets están pensados, combinando los productos más buscados con la mejor propuesta de precio. Este set se compone de 4 Sillas Tolix con 1 color a elección.";
-textoSecundario.innerHTML = "Mesa de 4 patas cromadas conificadas con tapa de 30 mm de espesor en color Peral. La medida de la mesa es de 1.35 x 0.85 mts. Ideal para cocinas o comedores de espacios reducidos. No tenes porque perder diseño o estilo, si no contas con un espacio amplio. Este modelo de mesa, permite combinar lo mejor del cromo con patas finamente conificadas, para darle estilo y personalidad.";
+textoInicio.innerHTML = "Qué mejor que equipar tu casa comprando todo lo necesario de una sola vez. Nuestros sets están pensados, combinando los productos más buscados con la mejor propuesta de precio. Este set se compone de 3 Sillas Hermeticas con 1 color a elección.";
 
 const img1 = document.querySelector("#imagen1");
 const img2 = document.querySelector("#imagen2");
 const img3 = document.querySelector("#imagen3");
-const img4 = document.querySelector("#imagen4");
-const img5 = document.querySelector("#imagen5");
-const img6 = document.querySelector("#imagen6");
+
 
 img1.src = "imagenes/silla-1.jpg";
 img2.src = "imagenes/silla-2.jpg";
 img3.src = "imagenes/silla-3.jpg";
-img4.src = "imagenes/mesa1.jpg";
-img5.src = "imagenes/mesa2.png";
-img6.src = "imagenes/mesa3.jpeg";
+
+
+//items carrito
+const obj = []
+
+const clickView = (desc) => {
+    if (desc.includes("silla")) {
+        let number = desc.split("-"); //numero de la silla 
+        switch (number[1]) {
+            case "1":
+                let silla1 = new tienda("Silla Hermetica 1 ", 5000, 1.21);
+                return alert(silla1.sillas());
+            case "2":
+                let silla2 = new tienda("Silla Hermetica 2 ", 6000, 1.21);
+                return alert(silla2.sillas());
+            case "3":
+                let silla3 = new tienda("Silla Hermetica 3 ", 7000, 1.21); 
+                return alert(silla3.sillas());
+            default:
+                console.log("no se encontro la silla")
+                return
+        }
+        
+    }
+}
+
+
+const clickHere = (desc) => {
+    if (desc.includes("silla")) {
+        let number = desc.split("-"); //numero de la silla 
+        switch (number[1]) {
+            case "1":
+                let silla1 = new tienda("Silla Hermetica 1 ", 5000, 1.21);
+                obj.push(silla1.item());
+                return alert(`Se agrego a su carrito ${silla1.producto}`);
+            case "2":
+                let silla2 = new tienda("Silla Hermetica 2 ", 6000, 1.21);
+                obj.push(silla2.item());
+                return alert(`Se agrego a su carrito ${silla2.producto}`);
+            case "3":
+                let silla3 = new tienda("Silla Hermetica 3 ", 7000, 1.21); 
+                obj.push(silla3.item());
+                return alert(`Se agrego a su carrito ${silla3.producto}`);
+            default:
+                console.log("no se encontro la silla")
+                return
+        }
+        
+    }
+}
+
+const tagName = document.getElementById("carritoContainer");
+
+const clickCarrito = () => {
+    if(obj.length > 0){
+        tagName.innerHTML = "";
+        obj.map(item => {
+            const div = document.createElement("div");
+            div.innerHTML = `<h2>${item.producto}</h2>
+            <p>${item.precio}</p>`;
+            tagName.appendChild(div);
+        })
+        
+        const hr = document.createElement("hr");
+        tagName.appendChild(hr);
+        const total = document.createElement("div");
+        total.innerHTML = `<p>Total: ${obj.reduce((total, item) => total + item.precio, 0)}</p>`;
+        tagName.appendChild(total);
+    }
+}
+
+
+
