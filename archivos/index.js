@@ -57,9 +57,9 @@ const img4 = document.querySelector("#imagen4");
 const img5 = document.querySelector("#imagen5");
 const img6 = document.querySelector("#imagen6");
 
-img1.src = "../imagenes/silla-1.jpg";
-img2.src = "../imagenes/silla-2.jpg";
-img3.src = "../imagenes/silla-3.jpg";
-img4.src = "../imagenes/mesa1.jpg";
-img5.src = "../imagenes/mesa2.png";
-img6.src = "../imagenes/mesa3.jpeg";
+img1.src = "imagenes/silla-1.jpg";
+img2.src = "imagenes/silla-2.jpg";
+img3.src = "imagenes/silla-3.jpg";
+img4.src = "imagenes/mesa1.jpg";
+img5.src = "imagenes/mesa2.png";
+img6.src = "imagenes/mesa3.jpeg";
