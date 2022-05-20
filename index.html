@@ -1,149 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./estylos/vintapage.css" />
-    <title>Proyecto-Tienda-Casa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  </head>
-  <body>
 
-    <!--aqui  nav bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Ecommerce coder</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./estylos/vintapage.css" />
+  <title>Proyecto-Tienda-Casa</title>
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">  
+</head>
+
+<body>
+  <!-- # importante -->
+  <!-- <button onclick="clickCarrito()" type="button" class="mx-2 btn btn-outline-primary" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            Carrito
+          </button> -->
+  <!--aqui  nav bar -->
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
+      </div>
+      <!-- ? LOGIN -->
+      <button id="loginBtn" type="button" class="btn btn-outline-primary mx-2" data-bs-toggle="modal" data-bs-target="#login">
+        Iniciar sesion
+      </button>
+      <div class="modal fade" id="login"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Iniciar sesion</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input id="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input id="password" type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button onclick="login()" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Understood</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- ? LOGOUT -->
+      <!-- <button onclick="logout()" class="btn btn-outline-danger mx-2">
+        Cerrar sesion
+      </button> -->
+      <!-- ? USER -->
+      <div class="btn-group">
+        <button id="nameUser" type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          User
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-            <!-- CARRITO -->
-            <!-- Scrollable modal -->
-            <!-- Button trigger modal -->
-            <button onclick="clickCarrito()" type="button" class="mx-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#">Perfil</a></li>
+          <li>
+            <a 
+              onclick="clickCarrito()"
+              class="dropdown-item" href="!#"
+              data-bs-toggle="modal" data-bs-target="#staticBackdrop">
               Carrito
-            </button>
+            </a>
+          </li>
+          <li>
+            <a 
+            onclick="logout()" 
+            class="dropdown-item" href="#">
+            Cerrar Sesion
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- ?user -->
+    </div>
+  </nav>
+  <!--? MODAL -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="carritoContainer" class="container-fluid">
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Mi carrito pue</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div id="carritoContainer" class="modal-body">
-                      <!-- ITEMS CARRITO -->
-                      
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button onclick="finalizarCompra()" type="button" class="btn btn-primary">Finalizar Compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--? MODAL -->
+  <header>
+    <div id="containerEncabezado">
+      <div id="titulo">
+        
+        <h1>VINTAPAGE</h1>
+      </div>
+    </div>
+    <hr />
+  </header>
+  <main>
+    <div id="containerCuerpo">
+      <div id="textoInicio">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+        repellendus est facere, reiciendis sit odit consequatur vero harum
+        tenetur itaque totam dolore temporibus adipisci facilis minima maiores
+        soluta ipsum magni? Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Molestias, alias! Nesciunt quibusdam quas laudantium quasi.
+        Rerum quo consectetur, qui cupiditate, dolor fugiat adipisci deleniti
+        ab reprehenderit, minus similique odio quibusdam. Lorem ipsum, dolor
+        sit amet consectetur adipisicing elit. Harum ex eveniet soluta
+        deserunt numquam, consequatur, voluptate suscipit vel iusto impedit
+        molestiae quae. Sequi asperiores tempore harum esse, laborum ducimus.
+        Voluptatibus. Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Omnis, magnam atque. Similique ea earum non, aliquam maiores
+        temporibus nam magnam architecto consequatur perspiciatis placeat,
+        accusamus itaque error. Reiciendis, quidem sapiente.
+      </div>
+      <div class="imagenes">
+        <p class="img0">Sillas Hermeticas</p>
+        <hr>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                <img onclick="clickView('silla-1')" src="" id="imagen1" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title">Silla 1</h5>
+                  <a href="#" onclick="clickHere('silla-1')" class="btn btn-primary">Agregar carrito</a>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-      </div>
-    </nav>
-
-    <header>
-      <div id="containerEncabezado">
-        <div id="titulo">
-          <h1>VINTAPAGE</h1>
-        </div>
-      </div>
-      <hr />
-    </header>
-    <main>
-      <div id="containerCuerpo">
-        <div id="textoInicio" >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-          repellendus est facere, reiciendis sit odit consequatur vero harum
-          tenetur itaque totam dolore temporibus adipisci facilis minima maiores
-          soluta ipsum magni? Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Molestias, alias! Nesciunt quibusdam quas laudantium quasi.
-          Rerum quo consectetur, qui cupiditate, dolor fugiat adipisci deleniti
-          ab reprehenderit, minus similique odio quibusdam. Lorem ipsum, dolor
-          sit amet consectetur adipisicing elit. Harum ex eveniet soluta
-          deserunt numquam, consequatur, voluptate suscipit vel iusto impedit
-          molestiae quae. Sequi asperiores tempore harum esse, laborum ducimus.
-          Voluptatibus. Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Omnis, magnam atque. Similique ea earum non, aliquam maiores
-          temporibus nam magnam architecto consequatur perspiciatis placeat,
-          accusamus itaque error. Reiciendis, quidem sapiente.
-        </div>
-        <div class="imagenes">
-            <p class="img0">Sillas Hermeticas</p>
-            <hr>
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <div class="card" style="width: 18rem;">
-                    <img onclick="clickView('silla-1')" src="" id="imagen1" class="card-img-top" >
-                    <div class="card-body">
-                      <h5 class="card-title">Silla 1</h5>
-                      <a href="#" onclick="clickHere('silla-1')" class="btn btn-primary">Agregar carrito</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card" style="width: 18rem;">
-                    <img onclick="clickView('silla-2')" src="" id="imagen2" class="card-img-top">
-                    <div class="card-body">
-                      <h5 class="card-title">Silla 2</h5>
-                      <a href="#" onclick="clickHere('silla-2')" class="btn btn-primary">Agregar carrito</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card" style="width: 18rem;">
-                    <img onclick="clickView('silla-3')" src="" id="imagen3" class="card-img-top">
-                    <div class="card-body">
-                      <h5 class="card-title">Silla 3</h5>
-                      <a href="#" onclick="clickHere('silla-3')" class="btn btn-primary">Agregar carrito</a>
-                    </div>
-                  </div>
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                <img onclick="clickView('silla-2')" src="" id="imagen2" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title">Silla 2</h5>
+                  <a href="#" onclick="clickHere('silla-2')" class="btn btn-primary">Agregar carrito</a>
                 </div>
               </div>
             </div>
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                <img onclick="clickView('silla-3')" src="" id="imagen3" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title">Silla 3</h5>
+                  <a href="#" onclick="clickHere('silla-3')" class="btn btn-primary">Agregar carrito</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
       <br>
       <br>
       <br>
 
-      
-      </div>
-    </main>
-    <script src="archivos/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-  </body>
+
+    </div>
+  </main>
+  <script src="archivos/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
 </html>
