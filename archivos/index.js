@@ -1,3 +1,5 @@
+// const Swal = require('sweetalert2/dist/sweetalert2.js');
+
 class tienda {
     constructor(nombre, precio, iva) {
         this.producto = nombre;
@@ -317,7 +319,7 @@ const login = () => {
     //? alert  
     const name = email.split("@")[0];
     alertFunction('login', 'success', `Bienvenido ${name}`);
-    perfilFunc()
+    
 }
 const logout = () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -341,3 +343,39 @@ const readUser = () => {
     }
 }
 readUser();
+
+//? fetch api https://api.artic.edu/api/v1/artworks
+const getArtworks = () => {
+    const url = 'https://api.artic.edu/api/v1/artworks';
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.data);
+        const dataArr = data.data;
+        dataArr.map(item => {
+            const div = document.createElement("div");
+            let imagenUrl = ''
+            if (item.image_id === null || item.image_id === undefined) {
+                imagenUrl = '../imagenes/default-image-620x600.jpg'
+            }
+            else{
+                imagenUrl = `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`
+            }
+            div.innerHTML = `
+                <div class="col">
+                <div class="card h-100">
+                    <img src="${imagenUrl}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">${item.title}</h5>
+                    <p class="card-text">${item.inscriptions}</p>
+                    </div>
+                </div>
+                </div>
+            `;
+            div.onclick = ()=> handleClick(item);
+            document.getElementById("artworks").appendChild(div);
+        })
+    })
+    .catch(error => console.log(error))
+}
+getArtworks();
