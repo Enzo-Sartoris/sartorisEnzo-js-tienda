@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./estylos/vintapage.css" />
+  <title>Proyecto-Tienda-Casa</title>
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">  
+</head>
+
+<body>
+  <!-- # importante -->
+
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
+      </div>
+      <!-- ? LOGIN -->
+      <button id="loginBtn" type="button" class="btn btn-outline-primary mx-2" data-bs-toggle="modal" data-bs-target="#login">
+        Iniciar sesion
+      </button>
+      
+      <div class="modal fade" id="login"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Iniciar sesion</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input id="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input id="password" type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                
+                <button onclick="login()" class="btn btn-primary">Enviar</button>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+      <!-- ? REGISTRO -->
+      <button id="registerBtn" type="button" class="btn btn-outline-dark mx-2" data-bs-toggle="modal" data-bs-target="#register">
+        Registrarse
+      </button>
+
+      <div class="modal fade" id="register"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Registro</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="nameRegister" class="form-label">Full Name:</label>
+                  <input type="text" class="form-control" id="nameRegister" aria-describedby="emailHelp">
+                </div>
+                
+                <div class="mb-3">
+                  <label for="emailRegister" class="form-label">Email address:</label>
+                  <input type="email" class="form-control" id="emailRegister" aria-describedby="emailHelp">
+                </div>
+
+                <div class="mb-3">
+                  <label for="passRegister" class="form-label">Password:</label>
+                  <input type="password" class="form-control" id="passRegister">
+                </div>
+                
+                <button onclick="register()" class="btn btn-primary">Enviar</button>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- ? USER -->
+      <div class="btn-group">
+        <button id="nameUser" type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          User
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <a 
+              class="dropdown-item" href="#"
+              data-bs-toggle="modal" data-bs-target="#perfilBg"
+              >
+              Perfil
+            </a>
+          </li>
+          <li>
+            <a 
+              onclick="clickCarrito()"
+              class="dropdown-item" href="#"
+              data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Carrito
+            </a>
+          </li>
+          <li class="verify-role">
+            <a 
+              class="dropdown-item" href="#" onclick="readCategories()" 
+              data-bs-toggle="modal" data-bs-target="#formProduct">
+              Crear Producto
+            </a>
+          </li>
+          <li>
+            <a 
+            onclick="logout()" 
+            class="dropdown-item" href="#">
+            Cerrar Sesion
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- ?user -->
+    </div>
+  </nav>
+  <!--? MODAL PERFIL -->
+  <div class="modal fade" id="perfilBg" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="perfilTitle" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen bg-light">
+      <!-- Modal Header -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="perfilTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="bodyPerfil">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--? MODAL CARRITO -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="carritoContainer" class="container-fluid">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button onclick="finalizarCompra()" type="button" class="btn btn-primary">Finalizar Compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--? MODAL FORM PRODUCTO -->
+  <div class="modal fade" id="formProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Crear Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="nameProducto" class="form-label">Nombre:</label>
+              <input id="nameProducto" type="text" class="form-control" aria-describedby="nameProduct">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="descriptionProducto" class="form-label">Description</label>
+              <input id="descriptionProducto" type="text" class="form-control" >
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="priceProducto" class="form-label">Price</label>
+                  <input id="priceProducto" type="number" class="form-control">
+                </div>
+              </div>
+              <div class="col-8">
+                <div class="mb-3">
+                  <label for="categoriaProducto" class="form-label">Categoria</label>
+                  <select class="form-select" id="categoriaProducto" aria-label="Default select example">
+                    <option selected>Selecciona una categoria</option>
+                    <!-- <option value="1">One</option> -->
+                    
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="imgProducto" class="form-label">Imagen</label>
+              <input id="imgProducto" type="text" class="form-control" >
+            </div>
+
+            <button onclick="createProduct()" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button onclick="finalizarCompra()" type="button" class="btn btn-primary">Finalizar Compra</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- ?EDIT  -->
+  <div class="modal fade" id="formEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Editar Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <!-- INPUT HIDDEN -->
+            <input id="idEdit" type="hidden" class="form-control">
+            <div class="mb-3">
+              <label for="nameProducto" class="form-label">Nombre:</label>
+              <input id="nameEditProduct" type="text" class="form-control" aria-describedby="nameProduct">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="descriptionEditProducto" class="form-label">Description</label>
+              <input id="descriptionEditProducto" type="text" class="form-control" >
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="mb-3">
+                  <label for="priceProducto" class="form-label">Price</label>
+                  <input id="priceEditProducto" type="number" class="form-control">
+                </div>
+              </div>
+              <div class="col-8">
+                <div class="mb-3">
+                  <label for="categoriaEditProducto" class="form-label">Categoria</label>
+                  <select class="form-select" id="categoriaEditProducto" aria-label="Default select example">
+                    <option selected>Selecciona una categoria</option>
+                    <!-- <option value="1">One</option> -->
+                    
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="imgEditProducto" class="form-label">Imagen</label>
+              <input id="imgEditProducto" type="text" class="form-control" >
+            </div>
+            <button onclick="updateProduct()" class="btn btn-primary">Guardar</button>
+
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- ? HEADER -->
+  <header>
+    <div id="containerEncabezado">
+      <div id="titulo">
+        
+        <h1>VINTAPAGE</h1>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div id="containerCuerpo">
+      
+      <div class="container">
+        <h3>Productos </h3>
+        <hr>
+        <div class="mb-4 mt-2">
+          <div class="row row-cols-1 row-cols-md-4 g-4"  id="products">
+            <!--# cards -->
+            
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </main>
+  <script src="archivos/index.js"></script>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+</html>

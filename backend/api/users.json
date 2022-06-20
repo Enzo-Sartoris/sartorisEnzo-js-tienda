@@ -1,0 +1,19 @@
+[{
+    "id": "5321",
+    "email": "admin@mail.com",
+    "name": "admin",
+    "password": "admin",
+    "roles": {
+        "admin": true,
+        "user": false
+    }
+}, {
+    "id": "c98d795b-c823-47b7-b3af-1b029968b7b4",
+    "name": "enzo",
+    "email": "enzo@mail.com",
+    "password": "enzo",
+    "roles": {
+        "admin": false,
+        "user": true
+    }
+}]
